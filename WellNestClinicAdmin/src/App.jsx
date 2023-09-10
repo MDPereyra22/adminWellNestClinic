@@ -5,6 +5,7 @@ import "./App.css";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./Authenticator/AuthPro";
 import PostUser from "./components/PostUser/PostUser";
+import Users from "./components/Users/Users";
 
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
         {
           path: "/postUser",
           element: <PostUser></PostUser>,
+        },
+        {
+          path: "/users",
+          element: <Users></Users>,
         },
       ],
     },

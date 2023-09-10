@@ -9,6 +9,7 @@ function Home() {
     <div className={styles.container}>
       <div className={styles.linkContainer}>
         <Link to="/postUser">Create new user</Link>
+        <Link to="/users">User list</Link>
         <Link to="/postDoctor">Create new doctor</Link>
         <Link to="/deleteUser">Delete a user</Link>
       </div>
