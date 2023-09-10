@@ -1,21 +1,25 @@
 .page {
-  padding: 20px 0 20px 0;
+  padding: 20px 0;
+  background-color: #f0f0f0;
 }
+
 .heading {
   font-size: 34px;
   margin-bottom: 20px;
   padding-top: 50px;
+  color: #000000;
 }
 
 #title {
   margin: 0;
-  color: rgb(255, 247, 237);
+  color: rgb(0, 0, 0);
   font-size: 40px;
-  
 }
+
 #titleForm {
   margin: 10px auto;
 }
+
 .form {
   width: 100%;
   margin-bottom: 15px;
@@ -33,6 +37,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.6);
+  color: #fff; 
 }
 
 .label {
@@ -48,6 +53,8 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  color: #333; 
+  background-color: #fff; 
 }
 
 .button {

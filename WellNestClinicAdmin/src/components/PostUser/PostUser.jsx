@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios"; // Importa Axios
+import axios from "axios"; 
 import styles from "./PostUser.module.css"
 import validation from "./validation";
+import { Link } from "react-router-dom";
 
 
 const PostUser = () => {
@@ -68,10 +69,11 @@ const PostUser = () => {
   console.log(formData)
   return (
     <div className={styles.container}>
+              <Link to="/home" className={styles.link}>Home </Link>
       <h2>Crear Nuevo Usuario</h2>
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
-          <label>Nombre:</label>
+          <label>Name:</label>
           <input
             type="text"
             name="name"
@@ -83,7 +85,7 @@ const PostUser = () => {
           )}
         </div>
         <div className={styles.formGroup}>
-          <label>Apellido:</label>
+          <label>Lastname:</label>
           <input
             type="text"
             name="lastName"
@@ -92,7 +94,7 @@ const PostUser = () => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label>Correo Electrónico:</label>
+          <label>Email:</label>
           <input
             type="email"
             name="email"
@@ -110,7 +112,7 @@ const PostUser = () => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label>Tipo de DNI:</label>
+          <label>DNI type:</label>
           <input
             type="number"
             name="dniType"
@@ -119,7 +121,7 @@ const PostUser = () => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label>Fecha de Nacimiento:</label>
+          <label>Birthdate:</label>
           <input
             type="text"
             name="birthDate"
@@ -128,7 +130,7 @@ const PostUser = () => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label>Dirección:</label>
+          <label>Address:</label>
           <input
             type="text"
             name="address"
@@ -137,7 +139,7 @@ const PostUser = () => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label>Última Actualización:</label>
+          <label>Up to date:</label>
           <input
             type="text"
             name="upToDate"
@@ -146,7 +148,7 @@ const PostUser = () => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label>Contacto de Respaldo:</label>
+          <label>Backup contact:</label>
           <input
             type="text"
             name="backupContact"
@@ -155,7 +157,7 @@ const PostUser = () => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label>URL de Imagen:</label>
+          <label>Image url:</label>
           <input
             type="text"
             name="imageUrl"
@@ -176,7 +178,7 @@ const PostUser = () => {
           )}
         </div>
         <div className={styles.formGroup}>
-          <button type="submit">Crear Usuario</button>
+          <button type="submit">Create user</button>
         </div>
       </form>
     </div>

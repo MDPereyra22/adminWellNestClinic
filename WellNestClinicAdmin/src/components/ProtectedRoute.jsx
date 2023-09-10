@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
 
   return (
     <>
-      {isAuth.isAuthenticated && <NavBar />}
+      {isAuth.isAuthenticated}
       {isAuth.isAuthenticated ? (
         <Outlet></Outlet>
       ) : (
