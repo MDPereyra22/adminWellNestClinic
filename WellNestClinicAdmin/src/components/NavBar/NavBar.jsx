@@ -11,6 +11,7 @@ function NavBar() {
       <div className={styles.menu}>
         
         <Link to="/home" className={styles.linkNoUnderline}>Home </Link>
+        <Link to="/postUser" className={styles.linkNoUnderline}>Create new user </Link>
         <Link to= "/">
         <IconLogout className={styles.iconLogout}/>
         </Link>

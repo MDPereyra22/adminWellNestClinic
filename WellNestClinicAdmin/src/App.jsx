@@ -4,6 +4,7 @@ import Home from "./components/home/Home"
 import "./App.css";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./Authenticator/AuthPro";
+import PostUser from "./components/PostUser/PostUser";
 
 
 function App() {
@@ -19,6 +20,10 @@ function App() {
         {
           path: "/home",
           element: <Home></Home>,
+        },
+        {
+          path: "/postUser",
+          element: <PostUser></PostUser>,
         },
       ],
     },
