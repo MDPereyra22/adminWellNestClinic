@@ -3,7 +3,7 @@ import axios from 'axios';
 import { SET_USER,  UPDATE_PROFILE_PICTURE,  UPDATE_PASSWORD,
   PAY_MEMBERSHIP,  CANCEL_MEMBERSHIP, LOGIN_USERMEMBER,  VERIFY_USERNAME,
   VERIFY_ISMEMBER, GENERIC_ERROR, RESET_GENERIC_ERROR, RESET_IS_MEMBER,
-  GET_USER_ID, GET_SPECIALITY, DOCTOR_FILTERING, GET_DOCTORS, GET_SPECIALTIES, POST_USER } from './type.js';
+  GET_USER_ID, GET_SPECIALITY, DOCTOR_FILTERING, GET_DOCTORS, GET_SPECIALTIES, POST_USER, GET_DNITYPE, GET_PLAN } from './type.js';
 
 
 export const verifyUsername = (userName) => {
@@ -218,6 +218,37 @@ export const postUser = (payload) => {
       } catch (error) {
         console.error(error);
         alert(error.response.data.error)
+      }
+  };
+};
+
+
+
+export const getDniType = () => {
+  return async (dispatch) => {
+      try {
+          const response = await axios.get('https://serverwellnestclinic.onrender.com/dni-type/');
+          dispatch({
+              type: GET_DNITYPE,
+              payload: response.data,
+          });
+      } catch (error) {
+          console.error('Error fetching DNI:', error);
+      }
+  };
+};
+
+
+export const getPlan = () => {
+  return async (dispatch) => {
+      try {
+          const response = await axios.get('https://serverwellnestclinic.onrender.com/plan/');
+          dispatch({
+              type: GET_PLAN,
+              payload: response.data,
+          });
+      } catch (error) {
+          console.error('Error fetching PLAN:', error);
       }
   };
 };

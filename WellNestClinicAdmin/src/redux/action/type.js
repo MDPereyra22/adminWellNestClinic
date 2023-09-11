@@ -29,5 +29,7 @@ export const GET_SPECIALTIES = "GET_SPECIALTIES";
 //Admin
 
 export const POST_USER = "POST_USER";
+export const GET_DNITYPE = "GET_DNITYPE";
+export const GET_PLAN = "GET_PLAN"
 
 

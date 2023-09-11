@@ -4,7 +4,7 @@ import {
   PAY_MEMBERSHIP, CANCEL_MEMBERSHIP, GENERIC_ERROR,
   LOGIN_USERMEMBER, VERIFY_USERNAME, VERIFY_ISMEMBER,
   RESET_GENERIC_ERROR, RESET_IS_MEMBER, GET_USER_ID,
-  GET_SPECIALITY, DOCTOR_FILTERING, GET_SPECIALTIES, GET_DOCTORS, POST_USER
+  GET_SPECIALITY, DOCTOR_FILTERING, GET_SPECIALTIES, GET_DOCTORS, POST_USER, GET_DNITYPE, GET_PLAN
 } from '../action/type';
 
 const initialState = {
@@ -25,6 +25,9 @@ const initialState = {
 
   doctors: [],
   specialities: [],
+
+  plan: [],
+  dniType: [],
 };
 
 const userReducer = (state = initialState, action) => {
@@ -90,10 +93,24 @@ const userReducer = (state = initialState, action) => {
         ...state,
         specialities: action.payload,
       };
-      case POST_USER:
-        return{
-          ...state,
-        }
+
+    case GET_DNITYPE:
+      return {
+        ...state,
+        dniType: action.payload,
+      }
+
+    case GET_PLAN:
+      return {
+        ...state,
+        plan: action.payload,
+      }
+
+
+    case POST_USER:
+      return {
+        ...state,
+      }
     default:
       return state;
   }

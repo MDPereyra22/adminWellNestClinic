@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import axios from "axios"; 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styles from "./PostUser.module.css"
 import validation from "./validation";
 import { Link, useNavigate } from "react-router-dom";
-import {useDispatch} from "react-redux";
-import { postUser } from "../../redux/action/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { getDniType, getPlan, postUser } from "../../redux/action/actions";
 
 
 const PostUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dniType = useSelector((state) => state.dniType);
+  const plan = useSelector((state) => state.plan);
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     name: "",
@@ -25,6 +27,12 @@ const PostUser = () => {
     plan: 0,
   });
 
+  useEffect(() => {
+    dispatch(getDniType());
+    dispatch(getPlan());
+  }, []);
+
+  console.log(formData)
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -35,7 +43,12 @@ const PostUser = () => {
     }))
   };
 
-  console.log(errors)
+  const handleSelectChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -60,10 +73,13 @@ const PostUser = () => {
       alert("Incomplete or invalid data")
     }
   };
-  console.log(formData)
+
+
+
+
   return (
     <div className={styles.container}>
-              <Link to="/home" className={styles.link}>Home </Link>
+      <Link to="/home" className={styles.link}>Home </Link>
       <h2>Crear Nuevo Usuario</h2>
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
@@ -106,13 +122,19 @@ const PostUser = () => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label>DNI type:</label>
-          <input
-            type="number"
+          <label>DNI Type:</label>
+          <select
             name="dniType"
             value={formData.dniType}
-            onChange={handleChange}
-          />
+            onChange={handleSelectChange}
+          >
+            <option value="">Selecciona un tipo de DNI</option>
+            {dniType.map((dni) => (
+              <option key={dni.id} value={dni.id}>
+                {dni.type}
+              </option>
+            ))}
+          </select>
         </div>
         <div className={styles.formGroup}>
           <label>Birthdate:</label>
@@ -160,17 +182,21 @@ const PostUser = () => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label>Plan:</label>
-          <input
-            type="number"
+          <label>PLAN:</label>
+          <select
             name="plan"
             value={formData.plan}
-            onChange={handleChange}
-          />
-          {errors.plan && (
-            <p className={styles.error}>{errors.plan}</p>
-          )}
+            onChange={handleSelectChange}
+          >
+            <option value="">Select plan</option>
+            {plan.map((plan) => (
+              <option key={plan.id} value={plan.id}>
+                {plan.name}
+              </option>
+            ))}
+          </select>
         </div>
+
         <div className={styles.formGroup}>
           <button type="submit">Create user</button>
         </div>

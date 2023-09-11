@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./Authenticator/AuthPro";
 import PostUser from "./components/PostUser/PostUser";
 import Users from "./components/Users/Users";
+import PostDoctor from "./components/PostDoctor/PostDoctor";
 
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
           path: "/users",
           element: <Users></Users>,
         },
+        {
+          path: "/postDoctor",
+          element: <PostDoctor></PostDoctor>,
+        }
       ],
     },
   ]);
