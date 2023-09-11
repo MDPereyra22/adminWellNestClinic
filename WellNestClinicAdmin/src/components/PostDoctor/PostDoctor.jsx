@@ -52,7 +52,6 @@ const PostDoctor = () => {
             })
             .catch((error) => {
                 alert("Error creating the doctor:", error);
-                // Handle errors here, display an error message, or take additional actions
             });
     };
 

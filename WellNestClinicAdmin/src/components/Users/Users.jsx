@@ -33,7 +33,7 @@ function Users() {
             <p className={styles.value}>{client.dni}</p>
             <p className={styles.field}>Birthdate:</p>
             <p className={styles.value}>{client.birthDate}</p>
-            {/* Puedes mostrar más detalles según tus necesidades */}
+
           </li>
         ))}
       </ul>
