@@ -26,3 +26,8 @@ export const GET_DOCTORS ="GET_DOCTORS";
 export const GET_SPECIALTIES = "GET_SPECIALTIES";
 
 
+//Admin
+
+export const POST_USER = "POST_USER";
+
+

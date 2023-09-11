@@ -25,9 +25,9 @@ function Users() {
       <ul>
         {clients.map((client, index) => (
           <li key={index} className={styles.clientItem}>
-            <p className={styles.field}>Nombre:</p>
+            <p className={styles.field}>Name:</p>
             <p className={styles.value}>{client.name} {client.lastName}</p>
-            <p className={styles.field}>Correo Electrónico:</p>
+            <p className={styles.field}>Email:</p>
             <p className={styles.value}>{client.email}</p>
             <p className={styles.field}>DNI:</p>
             <p className={styles.value}>{client.dni}</p>

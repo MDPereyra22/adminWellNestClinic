@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import axios from "axios"; 
 import styles from "./PostUser.module.css"
 import validation from "./validation";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {useDispatch} from "react-redux";
+import { postUser } from "../../redux/action/actions";
 
 
 const PostUser = () => {
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     name: "",
@@ -38,16 +41,7 @@ const PostUser = () => {
     event.preventDefault();
 
     if (Object.keys(errors).length === 0) {
-      axios
-        .post("https://serverwellnestclinic.onrender.com/userClient", formData)
-        .then((response) => {
-          console.log(response.data);
-          window.location.href = "/home";
-        })
-        .catch((error) => {
-          console.error(error);
-          alert(error.response.data.error)
-        });
+      dispatch(postUser(formData));
       setFormData({
         name: "",
         lastName: "",
@@ -61,7 +55,7 @@ const PostUser = () => {
         imageUrl: "",
         plan: 0,
       });
-
+      navigate("/home")
     } else {
       alert("Incomplete or invalid data")
     }

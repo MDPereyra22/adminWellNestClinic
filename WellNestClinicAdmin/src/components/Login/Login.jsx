@@ -84,7 +84,7 @@ const Login = () => {
       ) : (
         <div>
           <h1 id={style.title} className={style.heading}>
-            Welcome
+            Welcome Admin
           </h1>
           <div className={style.container}>
             <h3 id={style.titleForm}>Sign in</h3>

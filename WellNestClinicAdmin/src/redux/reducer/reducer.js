@@ -4,7 +4,7 @@ import {
   PAY_MEMBERSHIP, CANCEL_MEMBERSHIP, GENERIC_ERROR,
   LOGIN_USERMEMBER, VERIFY_USERNAME, VERIFY_ISMEMBER,
   RESET_GENERIC_ERROR, RESET_IS_MEMBER, GET_USER_ID,
-  GET_SPECIALITY, DOCTOR_FILTERING, GET_SPECIALTIES, GET_DOCTORS
+  GET_SPECIALITY, DOCTOR_FILTERING, GET_SPECIALTIES, GET_DOCTORS, POST_USER
 } from '../action/type';
 
 const initialState = {
@@ -90,6 +90,10 @@ const userReducer = (state = initialState, action) => {
         ...state,
         specialities: action.payload,
       };
+      case POST_USER:
+        return{
+          ...state,
+        }
     default:
       return state;
   }
