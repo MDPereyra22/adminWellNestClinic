@@ -1,31 +1,34 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import style from "./Login.module.css";
 import { loginUser, getUser } from "../../redux/action/actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
-import {useAuth} from "../../Authenticator/AuthPro";
-import Loading from "../Loading/Loading"
+import { useAuth } from "../../Authenticator/AuthPro";
+import Loading from "../Loading/Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { GoogleLogin } from '@react-oauth/google';
 
 //Toast
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
-  const [dni, setDni] = useState("");
   const [password, setPassword] = useState("");
-  const [isVisible, setIsVisible] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const auth = useAuth()
+  const auth = useAuth();
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   if (auth.isAuthenticated) {
-    return(
-      <Navigate to="/home"></Navigate>
-    )
+    return <Navigate to="/home"></Navigate>;
   }
 
   const handleEmailChange = (e) => {
@@ -34,19 +37,26 @@ const Login = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-  const handleDniChange = (e) => {
-    setDni(e.target.value);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      const loginResponse = await dispatch(loginUser(email, password, dni));
+      const loginResponse = await dispatch(loginUser(email, password, null));
+      
       if (loginResponse.data.pass) {
-        dispatch(getUser(loginResponse.data.id));
-        auth.getAccess()
+       
+        dispatch(getUser(loginResponse.data.user.id, loginResponse.data.accessToken));
+
+        // const json = (await loginResponse.json()) 
+        
+
+        if (loginResponse.data.accessToken && loginResponse.data.refreshToken) {
+          auth.saveUser(loginResponse);
+        }
+
+        auth.getAccess();
         navigate("/home");
       } else if (loginResponse.status === 403) {
         if (loginResponse.data.message) {
@@ -77,14 +87,51 @@ const Login = () => {
     });
   };
 
+  const googleResponse = async (response) => {
+    setIsLoading(true);
+    try {
+      const loginResponse = await dispatch(loginUser(null, null, response.credential));
+      
+      if (loginResponse.data.pass) {
+       
+        dispatch(getUser(loginResponse.data.user.id, loginResponse.data.accessToken));
+
+        // const json = (await loginResponse.json()) 
+        
+
+        if (loginResponse.data.accessToken && loginResponse.data.refreshToken) {
+          auth.saveUser(loginResponse);
+        }
+
+        auth.getAccess();
+        navigate("/home");
+      } else if (loginResponse.status === 403) {
+        if (loginResponse.data.message) {
+          messageError(loginResponse.data.message);
+        } else {
+          messageError(loginResponse.data.error);
+        }
+      } else {
+        messageError(loginResponse.data.error);
+      }
+    } catch (error) {
+      setError("Internal error");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  const googleResponseError = (erros) => {
+    messageError('Register faile');
+  }
+
   return (
     <div className={style.page}>
-      {isLoading ? (
-        <Loading></Loading>
-      ) : (
+      
+      {isLoading && <Loading></Loading>}
         <div>
           <h1 id={style.title} className={style.heading}>
-            Welcome Admin
+            Welcome
           </h1>
           <div className={style.container}>
             <h3 id={style.titleForm}>Sign in</h3>
@@ -102,54 +149,49 @@ const Login = () => {
                   onChange={handleEmailChange}
                 />
               </div>
-              <div className={style.form}>
-                <div>
-                  {" "}
-                  <label className={style.label}>ID number</label>
-                </div>
-                <input
-                  type="text"
-                  className={style.input}
-                  placeholder="Enter ID"
-                  value={dni}
-                  onChange={handleDniChange}
-                />
-              </div>
               <div>
                 {" "}
                 <div>
                   <label className={style.label}>Password </label>
                 </div>
                 <input
-                  type="password"
-                  className={`${style.input} ${
-                    isVisible ? style.isVisible : ""
-                  }`}
+                  type={showPassword ? "text" : "password"}
+                  className={style.input}
                   placeholder="Enter password"
                   value={password}
                   onChange={handlePasswordChange}
                 />
+                <button className={style.toggle} type="button" onClick={togglePasswordVisibility}>
+                  {showPassword ? (
+                    <FontAwesomeIcon icon={faEye} />
+                  ) : (
+                    <FontAwesomeIcon icon={faEyeSlash} />
+                  )}
+                </button>
               </div>{" "}
               <button className={style.button} type="submit">
                 Submit
               </button>
               {error && <p className={style.error}>{error}</p>}
-              <h4>Or log in with Google</h4>
-              <h5>
+              <h4>
                 Don't have an account?{" "}
                 <a
                   className={style.signup}
-                  href="/checkUser"
-                  onClick={() => navigate("/checkUser")}
+                  onClick={() => navigate("/sign-up")}
                 >
                   Register
                 </a>
-              </h5>
+              </h4>
             </form>
+            {/* <br/> <br/> */}
+            <GoogleLogin
+              useOneTap
+              clientId={import.meta.env.VITE_CLIENT_ID_GOOGLE}
+              onSuccess={googleResponse}
+              onError={googleResponseError}
+              text = "Sign in with Google"/>
           </div>
         </div>
-      )}
-
       <ToastContainer></ToastContainer>
     </div>
   );

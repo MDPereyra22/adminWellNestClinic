@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Login from "./components/Login/Login"
+import Login from "./pages/Login/LoginPages"
+import SignUp from "./pages/SignUp/SignUp"
 import Home from "./components/home/Home"
 import "./App.css";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -14,6 +15,10 @@ function App() {
     {
       path: "/",
       element: <Login></Login>
+    },
+    {
+      path: "/sign-up",
+      element: <SignUp></SignUp>
     },
     {
       path: "/",

@@ -1,7 +1,6 @@
 .page {
   padding: 20px 0 20px 0;
 }
-
 .heading {
   font-size: 34px;
   margin-bottom: 20px;
@@ -21,15 +20,12 @@
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   margin-bottom: 15px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
 }
 
 .container {
@@ -43,7 +39,12 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
 }
+#titleForm{
+    color: rgba(255, 247, 237, 0.7);
+}
+
 
 .label {
   font-size: 16px;
@@ -81,13 +82,13 @@
   margin-top: 2px;
 }
 
-.signup {
+.login {
   color: rgb(225, 219, 219);
 }
 
-.signup:hover{
-  cursor: pointer;
+.login:hover{
   color: #0056b3;
+  cursor: pointer;
 }
 
 .toggle {
@@ -101,4 +102,3 @@
   margin: 0px 0 0px 2px;
 
 } 
-

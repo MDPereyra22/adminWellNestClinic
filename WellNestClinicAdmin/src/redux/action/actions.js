@@ -55,17 +55,33 @@ export const resetGenericError = () => {
   }
 }
 
-export const loginUser = (email, password, dni) => {
+
+export const signUp = async (token) => {
+  const endpoint = import.meta.env.VITE_BASENDPOINT_BACK + `/userAdmin/register`;
+  try {
+    const body = {
+      token: token
+    };
+    const response = await axios.post(endpoint, body);
+    return response;
+
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export const loginUser = (email, password, token) => {
   return async function (dispatch) {
     const datos = {
       password: password,
       userName: email,
-      dni: dni,
+      token: token
     };
-    const endpoint = import.meta.env.VITE_BASENDPOINT_BACK + `/userClient/login` ;
+    const endpoint = import.meta.env.VITE_BASENDPOINT_BACK + `/userAdmin/login` ;
+    
     try {
       const response = await axios.post(endpoint, datos);
-      const apiResponse = response.data;
+      const apiResponse = response.data.user;
 
       dispatch({ type: LOGIN_USERMEMBER, payload: apiResponse });
 
@@ -74,22 +90,6 @@ export const loginUser = (email, password, dni) => {
       return error.response;
     }
   };
-};
-
-export const signUp = async (email, password, id) => {
-  const endpoint = import.meta.env.VITE_BASENDPOINT_BACK + `/userClient/register`;
-  try {
-    const body = {
-      email: email,
-      password: password,
-      id: id,
-    };
-    const response = await axios.post(endpoint, body);
-    return response;
-
-  } catch (error) {
-    return error.response;
-  }
 };
 
 export const resetIsMember = () => ({
