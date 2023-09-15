@@ -18,12 +18,13 @@ const PostProducts = () => {
     description: "",
     amount: "",
     dose: "",
-    image: "",
+    imageUrl: "",
     stock: "",
     price: "",
+    needPrescription:false,
     drugs: [],
-    laboratory: [],
-    type: [],
+    laboratory: 0,
+    presentation: 0,
   });
 
   const handleChange = (e) => {
@@ -33,36 +34,44 @@ const PostProducts = () => {
     });
   };
 
-  const handleSelect = (e) => {
+  const handleSelectDrugs = (e) => {
     setform({
       ...form,
       drugs: [...form.drugs, e.target.value],
     });
   };
 
+  const handleSelectLab = (e) => {
+    setform({
+      ...form,
+      laboratory: e.target.value
+    });
+  };
+
+  const handleSelectType = (e) => {
+    setform({
+      ...form,
+      presentation: e.target.value
+    });
+  };
+
   
 
   const handleSubmit = (e) => {
+    console.log("hola");
     e.preventDefault()
+    axios
+    .post("https://serverwellnestclinic.onrender.com/product", form)
+    .then((response) => {
+        alert("Product created successfully:", response.data);
+        navigate("/home")
+    })
+    .catch((error) => {
+        alert("Error creating the product:", error);
+    });
   }
 
-  //Drug
-  const selectedDrug = form.selectedDrug;
 
-  console.log("Form submitted with data:", form);
-  console.log("Selected Drug:", selectedDrug);
-
-  //Lab
-  const selectedLaboratory = form.selectedLaboratory;
-
-  console.log("Form submitted with data:", form);
-  console.log("Selected Lab:", selectedLaboratory);
-
-  //Type
-  const selectedType = form.selectedType;
-
-  console.log("Form submitted with data:", form);
-  console.log("Selected type:", selectedType);
 
   useEffect(() => {
     async function fetchDrugs() {
@@ -116,7 +125,7 @@ const PostProducts = () => {
             <button id="back" className={style.backButton}>&larr; back</button>
           </Link>   
        <div className={style.content}>
-    <form className={style.form} onSubmit={(event) => handleSubmit(event)}>
+    <form className={style.form} onSubmit={handleSubmit}>
       <div className={style.formTitle}>Post a product</div>
         <div>
           <label>Name: </label>
@@ -158,8 +167,8 @@ const PostProducts = () => {
           <label>Image: </label>
           <input
             type="text"
-            value={form.image}
-            name="image"
+            value={form.imageUrl}
+            name="imageUrl"
             onChange={handleChange}
             />
         </div>
@@ -184,11 +193,11 @@ const PostProducts = () => {
         <div>
             <label>Drug: </label>
         {/* <div className={style.contentSelect}> */}
-          <select onChange={handleSelect} value={form.selectedDrug}>
+          <select onChange={handleSelectDrugs} >
             <option value="">Select a drug</option>
           
             {drugs.map((drug) => (
-                <option className={style.letra} key={drug.id}value={drug.name}>{drug.name}</option>
+                <option className={style.letra} key={drug.id}value={drug.id}>{drug.name}</option>
                 ))}
           </select>
           {/* </div> */}
@@ -196,11 +205,11 @@ const PostProducts = () => {
         <div>
             <label>Laboratory: </label>
         {/* <div className={style.contentSelect}> */}
-          <select onChange={handleSelect} value={form.selectedLaboratory}>
+          <select onChange={handleSelectLab} >
             <option value="">Select a laboratory</option>
           
             {laboratory.map((lab) => (
-              <option className={style.letra} key={lab.id}value={lab.name}>{lab.name}</option>
+              <option className={style.letra} key={lab.id}value={lab.id}>{lab.name}</option>
             ))}
           </select>
           {/* </div> */}
@@ -208,11 +217,11 @@ const PostProducts = () => {
         <div>
             <label>Presentation type: </label>
            {/* <div className={style.contentSelect}> */}
-          <select onChange={handleSelect} value={form.selectedType}>
+          <select onChange={handleSelectType} >
             <option value="">Select a type</option>
           
             {type.map((t) => (
-                <option className={style.letra} key={t.id}value={t.type}>{t.type}</option>
+                <option className={style.letra} key={t.id}value={t.id}>{t.type}</option>
                 ))}
           </select>
           {/* </div> */}
@@ -220,9 +229,10 @@ const PostProducts = () => {
       
         <button
           className={style.submit}
-          disabled={
-              !form.name || !form.description || !form.image || !form.amount || !form.dose || !form.stock || !form.price || form.drugs.length === 0 ||form.laboratory.length === 0 || form.type.length === 0 
-          }
+          type="submit"
+          // disabled={
+          //     !form.name || !form.description || !form.image || !form.amount || !form.dose || !form.stock || !form.price || form.drugs.length === 0 ||form.laboratory.length === 0 || form.type.length === 0 
+          // }
           >    
          Create
         </button>

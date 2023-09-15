@@ -27,24 +27,24 @@ function Products() {
         <div>
           {products.map((product, index) => (
             <div className={styles.content}>
-              <div className={styles.divo}>
-                <div className={styles.diva}>
-              <div className={styles.chau}>Name: <span className={styles.hola}>{product.name}</span></div>
+              <div className={styles.contenedor}>
+                <div className={styles.info}>
+              <div className={styles.aloha}><img className={styles.imagen}src={product.imageUrl}></img></div>
+              <div className={styles.etiqueta}>Name: <span className={styles.valor}>{product.name}</span></div>
              
-              <div className={styles.chau}>Description: <span className={styles.hola}>{product.description}</span></div>
+              <div className={styles.etiqueta}>Description: <span className={styles.valor}>{product.description}</span></div>
         
-              <div className={styles.chau}>Amount: <span className={styles.hola}>{product.amount} mg</span></div>
+              <div className={styles.etiqueta}>Amount: <span className={styles.valor}>{product.amount} mg</span></div>
          
-              <div className={styles.chau}>Dose: <span className={styles.hola}>{product.dose}</span></div>
+              <div className={styles.etiqueta}>Dose: <span className={styles.valor}>{product.dose}</span></div>
      
-              <div className={styles.chau}>Image: <span className={styles.hola}>{product.image}</span></div>
    
-              <div className={styles.chau}>Stock: <span className={styles.hola}>{product.stock} left</span></div>
+              <div className={styles.etiqueta}>Stock: <span className={styles.valor}>{product.stock} left</span></div>
             
-              <div className={styles.chau}>Price: <span className={styles.hola}>${product.price}</span></div>
-              <div className={styles.chau}>Drugs: <span className={styles.hola}>{product.drugs.map((drug)=> drug.name)}</span></div>
-              <div className={styles.chau}>Laboratory: <span className={styles.hola}>{product.Product_Laboratory.name}</span></div>
-              <div className={styles.chau}>Presentation type: <span className={styles.hola}>{product.Product_PresentationType.type}</span></div>
+              <div className={styles.etiqueta}>Price: <span className={styles.valor}>${product.price}</span></div>
+              <div className={styles.etiqueta}>Drugs: <span className={styles.valor}>{product.drugs.map((drug)=> drug.name)}</span></div>
+              <div className={styles.etiqueta}>Laboratory: <span className={styles.valor}>{product.Product_Laboratory.name}</span></div>
+              <div className={styles.etiqueta}>Presentation type: <span className={styles.valor}>{product.Product_PresentationType.type}</span></div>
          
             </div>
             </div>

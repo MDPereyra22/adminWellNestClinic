@@ -5,13 +5,13 @@
   align-content: center;
   width: 70%;
 }
-.title{
-font-family: Georgia, "Times New Roman", Times, serif;
-font-size: 22px;
-font-weight: 900;
-color: rgb(11, 54, 11);
-align-self: center;
-margin-bottom: 20px;
+.title {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: rgb(11, 54, 11);
+  align-self: center;
+  margin-bottom: 20px;
 }
 
 .content {
@@ -22,10 +22,9 @@ margin-bottom: 20px;
   text-align: left;
   align-items: center;
   margin-left: 200px;
-  
 }
 
-.chau {
+.etiqueta {
   font-weight: 800px;
   color: black;
   font-size: 16px;
@@ -37,34 +36,26 @@ margin-bottom: 20px;
   margin-top: 13px;
 }
 
-.hola {
+.valor {
   background-color: #d9eef8;
   color: rgb(0, 0, 0);
   font-size: 15px;
- 
+
   font-weight: 600;
   flex-direction: row;
   width: 90px;
-  
-  
-  
 }
 
-
-.divo {
+.contenedor {
   background-color: #d9eef8;
   border-radius: 10px;
-  height: 400px;
-
-
-
-
+  height:570px
 }
 
-.diva{
-  margin-left: 40px;
+.info {
+  margin-left: 20px;
   margin-top: 30px;
-
+  
 }
 
 .backButton {
@@ -72,10 +63,26 @@ margin-bottom: 20px;
   color: white;
   font-size: 16px;
   margin-right: 570px;
-margin-top: 30px;
-  
+  margin-top: 30px;
+
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.2s;
   /* display: flexbox; */
+}
+
+.imagen {
+  width: 180px;
+  height: 160px;
+  border-radius: 10px;
+  align-self: center;
+  margin-top: 10px;
+  margin-left: 300px;
+}
+
+.aloha {
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+  align-content: center;
 }
