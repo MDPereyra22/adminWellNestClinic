@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import style from "./Login.module.css";
 import { loginUser, getUser } from "../../redux/action/actions";
 import { useDispatch } from "react-redux";
@@ -7,7 +7,7 @@ import { useAuth } from "../../Authenticator/AuthPro";
 import Loading from "../Loading/Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from "@react-oauth/google";
 
 //Toast
 import { ToastContainer, toast } from "react-toastify";
@@ -44,13 +44,13 @@ const Login = () => {
 
     try {
       const loginResponse = await dispatch(loginUser(email, password, null));
-      
-      if (loginResponse.data.pass) {
-       
-        dispatch(getUser(loginResponse.data.user.id, loginResponse.data.accessToken));
 
-        // const json = (await loginResponse.json()) 
-        
+      if (loginResponse.data.pass) {
+        dispatch(
+          getUser(loginResponse.data.user.id, loginResponse.data.accessToken)
+        );
+
+        // const json = (await loginResponse.json())
 
         if (loginResponse.data.accessToken && loginResponse.data.refreshToken) {
           auth.saveUser(loginResponse);
@@ -90,14 +90,16 @@ const Login = () => {
   const googleResponse = async (response) => {
     setIsLoading(true);
     try {
-      const loginResponse = await dispatch(loginUser(null, null, response.credential));
-      
-      if (loginResponse.data.pass) {
-       
-        dispatch(getUser(loginResponse.data.user.id, loginResponse.data.accessToken));
+      const loginResponse = await dispatch(
+        loginUser(null, null, response.credential)
+      );
 
-        // const json = (await loginResponse.json()) 
-        
+      if (loginResponse.data.pass) {
+        dispatch(
+          getUser(loginResponse.data.user.id, loginResponse.data.accessToken)
+        );
+
+        // const json = (await loginResponse.json())
 
         if (loginResponse.data.accessToken && loginResponse.data.refreshToken) {
           auth.saveUser(loginResponse);
@@ -119,23 +121,23 @@ const Login = () => {
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   const googleResponseError = (erros) => {
-    messageError('Register faile');
-  }
+    messageError("Register faile");
+  };
 
   return (
     <div className={style.page}>
-      
       {isLoading && <Loading></Loading>}
-        <div>
-          <h1 id={style.title} className={style.heading}>
-            Welcome
-          </h1>
-          <div className={style.container}>
-            <h3 id={style.titleForm}>Sign in</h3>
-            <form className={style.Form} onSubmit={handleSubmit}>
+      <div>
+        <h1 id={style.title} className={style.heading}>
+          Welcome
+        </h1>
+        <div className={style.container}>
+          <h3 id={style.titleForm}>Hey admin,</h3>
+          <h3 id={style.titleForm}>sign in with Google</h3>
+          {/* <form className={style.Form} onSubmit={handleSubmit}>
               <div className={style.form}>
                 <div>
                   {" "}
@@ -182,16 +184,19 @@ const Login = () => {
                   Register
                 </a>
               </h4>
-            </form>
-            {/* <br/> <br/> */}
-            <GoogleLogin
-              useOneTap
-              clientId={import.meta.env.VITE_CLIENT_ID_GOOGLE}
-              onSuccess={googleResponse}
-              onError={googleResponseError}
-              text = "Sign in with Google"/>
-          </div>
+            </form> */}
+          {/* <br/> <br/> */}
+          <div className={style.gooogle}></div>
+          <GoogleLogin
+            useOneTap
+            clientId={import.meta.env.VITE_CLIENT_ID_GOOGLE}
+            onSuccess={googleResponse}
+            onError={googleResponseError}
+            text="Sign in with Google"
+          />
         </div>
+      </div>
+
       <ToastContainer></ToastContainer>
     </div>
   );

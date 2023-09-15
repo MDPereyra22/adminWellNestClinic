@@ -30,6 +30,11 @@ export const GET_SPECIALTIES = "GET_SPECIALTIES";
 
 export const POST_USER = "POST_USER";
 export const GET_DNITYPE = "GET_DNITYPE";
-export const GET_PLAN = "GET_PLAN"
+export const GET_PLAN = "GET_PLAN";
+
+//Products
+export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
+export const GET_DRUGS = "GET_DRUGS";
+
 
 

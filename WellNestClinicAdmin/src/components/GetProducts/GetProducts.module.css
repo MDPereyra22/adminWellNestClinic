@@ -1,0 +1,81 @@
+.container {
+  justify-content: center;
+  align-items: center;
+  margin-left: 200px;
+  align-content: center;
+  width: 70%;
+}
+.title{
+font-family: Georgia, "Times New Roman", Times, serif;
+font-size: 22px;
+font-weight: 900;
+color: rgb(11, 54, 11);
+align-self: center;
+margin-bottom: 20px;
+}
+
+.content {
+  font-size: 16px;
+  font-weight: 500;
+  color: #090909;
+  margin-top: 20px;
+  text-align: left;
+  align-items: center;
+  margin-left: 200px;
+  
+}
+
+.chau {
+  font-weight: 800px;
+  color: black;
+  font-size: 16px;
+  font-weight: 900;
+  flex-direction: row;
+  border: #090909;
+  border-radius: 6px;
+  /* margin: 5px; */
+  margin-top: 13px;
+}
+
+.hola {
+  background-color: #d9eef8;
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+ 
+  font-weight: 600;
+  flex-direction: row;
+  width: 90px;
+  
+  
+  
+}
+
+
+.divo {
+  background-color: #d9eef8;
+  border-radius: 10px;
+  height: 400px;
+
+
+
+
+}
+
+.diva{
+  margin-left: 40px;
+  margin-top: 30px;
+
+}
+
+.backButton {
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  margin-right: 570px;
+margin-top: 30px;
+  
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  /* display: flexbox; */
+}

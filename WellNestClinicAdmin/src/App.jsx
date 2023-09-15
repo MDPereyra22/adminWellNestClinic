@@ -8,6 +8,8 @@ import { AuthProvider } from "./Authenticator/AuthPro";
 import PostUser from "./components/PostUser/PostUser";
 import Users from "./components/Users/Users";
 import PostDoctor from "./components/PostDoctor/PostDoctor";
+import PostProducts from "./components/PostProducts/PostProducts";
+import GetProducts from "./components/GetProducts/GetProducts";
 
 
 function App() {
@@ -39,7 +41,16 @@ function App() {
         {
           path: "/postDoctor",
           element: <PostDoctor></PostDoctor>,
-        }
+        },
+        {
+          path: "/postProducts",
+          element: <PostProducts></PostProducts>,
+        },
+        {
+          path: "/getProducts",
+          element: <GetProducts></GetProducts>,
+        },
+       
       ],
     },
   ]);
