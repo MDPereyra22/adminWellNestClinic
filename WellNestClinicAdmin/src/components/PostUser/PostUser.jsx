@@ -1,11 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import styles from "./PostUser.module.css"
+import styles from "./PostUser.module.css";
 import validation from "./validation";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDniType, getPlan, postUser } from "../../redux/action/actions";
-
+import BackGroundGlobal from "../backgrounds/BackgroundGlobal";
 
 const PostUser = () => {
   const dispatch = useDispatch();
@@ -32,23 +32,21 @@ const PostUser = () => {
     dispatch(getPlan());
   }, []);
 
-  console.log(formData)
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-    setErrors(validation({
-      ...formData,
-      [event.target.name]: event.target.value
-    }))
+    setErrors(
+      validation({
+        ...formData,
+        [event.target.name]: event.target.value,
+      })
+    );
   };
 
   const handleSelectChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
-
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -68,139 +66,137 @@ const PostUser = () => {
         imageUrl: "",
         plan: 0,
       });
-      navigate("/home")
+      navigate("/home");
     } else {
-      alert("Incomplete or invalid data")
+      alert("Incomplete or invalid data");
     }
   };
 
-
-
-
   return (
-    <div className={styles.container}>
-      <Link to="/home" className={styles.link}>Home </Link>
-      <h2>Crear Nuevo Usuario</h2>
-      <form onSubmit={handleSubmit}>
-        <div className={styles.formGroup}>
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          {errors.name && (
-            <p className={styles.error}>{errors.name}</p>
-          )}
-        </div>
-        <div className={styles.formGroup}>
-          <label>Lastname:</label>
-          <input
-            type="text"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label>DNI:</label>
-          <input
-            type="text"
-            name="dni"
-            value={formData.dni}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label>DNI Type:</label>
-          <select
-            name="dniType"
-            value={formData.dniType}
-            onChange={handleSelectChange}
-          >
-            <option value="">Selecciona un tipo de DNI</option>
-            {dniType.map((dni) => (
-              <option key={dni.id} value={dni.id}>
-                {dni.type}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className={styles.formGroup}>
-          <label>Birthdate:</label>
-          <input
-            type="text"
-            name="birthDate"
-            value={formData.birthDate}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label>Address:</label>
-          <input
-            type="text"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label>Up to date:</label>
-          <input
-            type="text"
-            name="upToDate"
-            value={formData.upToDate}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label>Backup contact:</label>
-          <input
-            type="text"
-            name="backupContact"
-            value={formData.backupContact}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label>Image url:</label>
-          <input
-            type="text"
-            name="imageUrl"
-            value={formData.imageUrl}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label>PLAN:</label>
-          <select
-            name="plan"
-            value={formData.plan}
-            onChange={handleSelectChange}
-          >
-            <option value="">Select plan</option>
-            {plan.map((plan) => (
-              <option key={plan.id} value={plan.id}>
-                {plan.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className={styles.formGroup}>
-          <button type="submit">Create user</button>
-        </div>
-      </form>
+    <div className={styles.componentContainer}>
+      <div className={styles.formContainer}>
+        <h2>Crear Nuevo Usuario</h2>
+        <form onSubmit={handleSubmit}>
+          <div className={styles.formGroup}>
+            <label>Name:</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            {errors.name && <p className={styles.error}>{errors.name}</p>}
+          </div>
+          <div className={styles.formGroup}>
+            <label>Lastname:</label>
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label>DNI:</label>
+            <input
+              type="text"
+              name="dni"
+              value={formData.dni}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label>DNI Type:</label>
+            <select
+              name="dniType"
+              value={formData.dniType}
+              onChange={handleSelectChange}
+            >
+              <option value="">Select a DNI type</option>
+              {dniType.map((dni) => (
+                <option key={dni.id} value={dni.id}>
+                  {dni.type}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className={styles.formGroup}>
+            <label>Birthdate:</label>
+            <input
+              type="date"
+              name="birthDate"
+              value={formData.birthDate}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label>Address:</label>
+            <input
+              type="text"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label>Up to date:</label>
+            <input
+              type="date"
+              name="upToDate"
+              value={formData.upToDate}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label>Backup contact:</label>
+            <input
+              type="text"
+              name="backupContact"
+              value={formData.backupContact}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label>Image url:</label>
+            <input
+              type="text"
+              name="imageUrl"
+              value={formData.imageUrl}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label>PLAN:</label>
+            <select
+              name="plan"
+              value={formData.plan}
+              onChange={handleSelectChange}
+            >
+              <option value="">Select plan</option>
+              {plan.map((plan) => (
+                <option key={plan.id} value={plan.id}>
+                  {plan.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className={styles.buttons}>
+            <Link to="/home" className={styles.link}>
+              Home{" "}
+            </Link>
+            <button type="submit">Create user</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

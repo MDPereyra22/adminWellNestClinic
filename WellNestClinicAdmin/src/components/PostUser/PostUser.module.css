@@ -1,15 +1,21 @@
+.componentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: whitesmoke;
+}
 
-
-.container {
+.formContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #072d5678;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px; 
-  margin: 0 auto;
+  width: 60%;
+  height: 700px;
 }
 
 h2 {
@@ -20,24 +26,41 @@ h2 {
 
 form {
   display: flex;
-  flex-direction: column;
-  align-items: stretch; 
-  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 600px;
+  height: 700px;
 }
 
 .formGroup {
-  margin-bottom: 15px; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 45%;
+  height: 70px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 45%;
+  height: 70px;
 }
 
 .link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #007bff;
+  text-decoration: none;
   color: #fff;
-  padding: 12px 20px; 
-  border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s;
   font-size: 16px;
+  width: 124px;
+  height: 43px;
 }
 
 label {
@@ -51,6 +74,15 @@ input {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  width: 92%;
+}
+
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
 }
 
 button {
@@ -62,9 +94,12 @@ button {
   cursor: pointer;
   transition: background-color 0.2s;
   font-size: 16px;
+  width: 124px;
+  height: 43px;
 }
 
-button:hover {
+button:hover,
+.link:hover {
   background-color: #0056b3;
 }
 
@@ -74,3 +109,20 @@ button:hover {
   margin-top: 5px;
 }
 
+@media screen and (max-width: 980px) {
+  .componentContainer {
+    height: 150vh;
+  }
+
+  .formContainer {
+    height: 100vh;
+  }
+
+  form {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
+  }
+}
