@@ -291,5 +291,41 @@ export const postProducts = (payload) => {
 };
 
 
+export const fetchProducts = async () => {
+  const accessToken = localStorage.getItem("accessToken");
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+  try {
+    const endpoint = import.meta.env.VITE_BASENDPOINT_BACK;
+    const response = await axios.get(`${endpoint}/product`, config);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    throw error;
+  }
+};
+
+export const deleteProduct = async (id) => {
+  try {
+    const endpoint = import.meta.env.VITE_BASENDPOINT_BACK;
+    await axios.delete(`${endpoint}/product/${id}`);
+  } catch (error) {
+    console.error('Error deleting product:', error);
+    throw error;
+  }
+};
+
+export const restoreProduct = async (id) => {
+  try {
+    await axios.put(`${baseUrl}restore/${id}`);
+  } catch (error) {
+    console.error('Error restoring product:', error);
+    throw error;
+  }
+};
 
 
