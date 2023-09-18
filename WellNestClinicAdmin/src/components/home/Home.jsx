@@ -1,4 +1,4 @@
-// Home.js
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import { Link } from 'react-router-dom';
@@ -8,6 +8,7 @@ function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.linkContainer}>
+        <h1>Welcome Admin</h1>
         <Link to="/postUser">Create a new user</Link>
         <Link to="/users">User list</Link>
         <Link to="/postDoctor">Create a new doctor</Link>
