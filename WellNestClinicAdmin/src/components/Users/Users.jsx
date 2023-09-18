@@ -20,7 +20,7 @@ function Users() {
 
   return (
     <div className={styles.container}>
-      <Link to="/home" className={styles.link}>Home </Link>
+      <Link to="/home" className={styles.link}>Go back </Link>
       <h2>List of clients</h2>
       <ul>
         {clients.map((client, index) => (

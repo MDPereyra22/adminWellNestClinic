@@ -11,27 +11,27 @@
     max-width: 1200px; */
 }
 
-
 .form {
   background-color: #e6f4fa;
   border: 1.6px solid #424242;
   border-radius: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   width: 700px;
   height: 600px;
   justify-content: center;
-  align-items: center;
+  padding-left: 40px;
 }
 
 .formTitle {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 22px;
+  justify-content: center;
   font-weight: 900;
   color: rgb(11, 54, 11);
   align-self: center;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .form label {
@@ -41,29 +41,89 @@
   width: 150px;
   text-align: left;
 }
+.drug {
+  flex-direction: column;
+  display: flex;
+  font-size: 14px;
+  /* justify-content: center; */
+  align-items: center;
+  /* text-align: center; */
+  align-self: center;
+  align-content: center;
+  margin-left: 40px;
+}
+
+.lab {
+  flex-direction: column;
+  display: flex;
+  font-size: 14px;
+  /* justify-content: center; */
+  align-items: center;
+  /* text-align: center; */
+  align-self: center;
+  align-content: center;
+  margin-left: 40px;
+}
+
+.type {
+  flex-direction: column;
+  display: flex;
+  font-size: 14px;
+  /* justify-content: center; */
+  align-items: center;
+  /* text-align: center; */
+  align-self: center;
+  align-content: center;
+  margin-left: 40px;
+}
+.nombreDrug {
+  flex-direction: row;
+  display: block;
+  margin-left: 95px;
+}
+
+.nombreLab {
+  flex-direction: row;
+  display: block;
+  margin-left: 55px;
+}
+
+.nombreType {
+  flex-direction: row;
+  display: block;
+  margin-left: 0px;
+}
+
+.allSelects {
+  /* 
+  background-color: red; */
+  /* margin-bottom: 50px; */
+  margin-top: 50px;
+}
 
 .form input {
-  background-color: #eef7fb;
-  flex: 1;
+  /* padding-top: 10px; */
+  background-color: #ffffff;
+
   font-size: 14px;
-  padding: 6px;
+  padding: 7px;
+  margin: 9px 0px 9px 0px;
   border: 1.6px solid #424242;
   border-radius: 5px;
-  margin: 6px 0px 6px 0px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .form select {
-  background-color: #eef7fb;
-  flex: 1;
+  background-color: #ffffff;
   padding: 6px;
   border: 1.6px solid #424242;
   border-radius: 5px;
-  margin: 6px 0px 6px 0px;
-  width: 220px;
+  margin: 5px 10px 5px 10px;
+  width: 250px;
   font-family: sans-serif;
   font-weight: 500;
 }
+
 .letra {
   font-family: sans-serif;
   font-size: 14px;
@@ -76,18 +136,36 @@
   background-color: #007bff;
   color: white;
   font-size: 16px;
-  margin-top: 30px;
-  margin-right: 600px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+}
+
+
+.submit {
+  margin-right: 2px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-left: 30px;
+}
+.form button {
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
-.form button {
-  margin-top: 20px;
-  display: block;
-  width: 100px;
-  font-size: 16px;
-  border-radius: 10px;
-  cursor: pointer;
+
+.botones {
+  /* display: flex; */
+  flex-direction: column;
+  /* margin: 10px 10px 10px 10px; */
+  /* background-color: orange; */
+  height: fit-content;
+  margin-top: 100px;
 }

@@ -7,7 +7,7 @@
 }
 .title {
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 900;
   color: rgb(11, 54, 11);
   align-self: center;
@@ -47,15 +47,14 @@
 }
 
 .contenedor {
-  background-color: #d9eef8;
+  background-color: #d9f1f8;
   border-radius: 10px;
-  height:570px
+  height:fit-content;
 }
 
 .info {
   margin-left: 20px;
   margin-top: 30px;
-  
 }
 
 .backButton {
@@ -85,4 +84,24 @@
   flex-wrap: wrap;
   justify-items: center;
   align-content: center;
+}
+
+.deleteButton {
+  /* background-color: #007bff; */
+padding: 6px;
+
+}
+
+.deleteButton button {
+  background-color: #007bff;
+  padding: 3px;
+  color: white;
+  /* justify-items: center;
+  align-content: center; */
+  margin-left: 350px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  /* align-self: center; */
+  transition: background-color 0.2s;
 }

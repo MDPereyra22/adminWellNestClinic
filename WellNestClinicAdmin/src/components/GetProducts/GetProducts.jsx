@@ -65,7 +65,7 @@ function Products() {
     <div className={styles.container}>
 
       <Link to="/">
-        <button id="back" className={styles.backButton}>&larr; back</button>
+        <button id="back" className={styles.backButton}>Go back</button>
       </Link>
       <div className={styles.title}>All products</div>
       <div>
@@ -91,12 +91,14 @@ function Products() {
                 <div className={styles.etiqueta}>Presentation type: <span className={styles.valor}>{product.Product_PresentationType.type}</span></div>
 
               </div>
+              <div className={styles.deleteButton}>
               <button
-                className={styles.deleteButton}
+                
                 onClick={() => handleDeleteProduct(product.id)}
               >
                 Delete Product
               </button>
+            </div>
             </div>
           </div>
 

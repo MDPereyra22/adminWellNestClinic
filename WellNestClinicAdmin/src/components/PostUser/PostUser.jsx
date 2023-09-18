@@ -191,7 +191,7 @@ const PostUser = () => {
           </div>
           <div className={styles.buttons}>
             <Link to="/home" className={styles.link}>
-              Home{" "}
+              Go back{" "}
             </Link>
             <button type="submit">Create user</button>
           </div>

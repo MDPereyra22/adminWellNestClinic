@@ -121,12 +121,9 @@ const PostProducts = () => {
 
     return (
         <div>
-        <Link to="/">
-            <button id="back" className={style.backButton}>&larr; back</button>
-          </Link>   
+      <div className={style.formTitle}>Post a product</div>
        <div className={style.content}>
     <form className={style.form} onSubmit={handleSubmit}>
-      <div className={style.formTitle}>Post a product</div>
         <div>
           <label>Name: </label>
           <input
@@ -190,8 +187,9 @@ const PostProducts = () => {
             onChange={handleChange}
             />
         </div>
-        <div>
-            <label>Drug: </label>
+        <div className={style.allSelects}>
+        <div className={style.drug}>
+            <label className={style.nombreDrug}>Drug: </label>
         {/* <div className={style.contentSelect}> */}
           <select onChange={handleSelectDrugs} >
             <option value="">Select a drug</option>
@@ -202,8 +200,8 @@ const PostProducts = () => {
           </select>
           {/* </div> */}
         </div>
-        <div>
-            <label>Laboratory: </label>
+        <div  className={style.lab}>
+            <label className={style.nombreLab}>Laboratory: </label>
         {/* <div className={style.contentSelect}> */}
           <select onChange={handleSelectLab} >
             <option value="">Select a laboratory</option>
@@ -214,8 +212,8 @@ const PostProducts = () => {
           </select>
           {/* </div> */}
         </div>
-        <div>
-            <label>Presentation type: </label>
+        <div className={style.type}>
+            <label className={style.nombreType}>Presentation type: </label>
            {/* <div className={style.contentSelect}> */}
           <select onChange={handleSelectType} >
             <option value="">Select a type</option>
@@ -226,6 +224,12 @@ const PostProducts = () => {
           </select>
           {/* </div> */}
         </div>
+        </div>
+        <div className={style.botones}>
+        <Link to="/">
+            <button id="back" className={style.backButton}>Go back</button>
+          </Link>   
+        {/* <Link to="/home" className={style.link}>Home </Link> */}
       
         <button
           className={style.submit}
@@ -236,6 +240,7 @@ const PostProducts = () => {
           >    
          Create
         </button>
+        </div>
       </form>
           </div>
           </div>   
