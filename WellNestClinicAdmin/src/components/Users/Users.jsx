@@ -21,17 +21,17 @@ function Users() {
   return (
     <div className={styles.container}>
       <Link to="/home" className={styles.link}>Home </Link>
-      <h2>Lista de Clientes</h2>
+      <h2>List of clients</h2>
       <ul>
         {clients.map((client, index) => (
           <li key={index} className={styles.clientItem}>
             <p className={styles.field}>Name:</p>
             <p className={styles.value}>{client.name} {client.lastName}</p>
-            <p className={styles.field}>Email:</p>
+            <p className={styles.field}>Email address:</p>
             <p className={styles.value}>{client.email}</p>
             <p className={styles.field}>DNI:</p>
             <p className={styles.value}>{client.dni}</p>
-            <p className={styles.field}>Birthdate:</p>
+            <p className={styles.field}>Birth date:</p>
             <p className={styles.value}>{client.birthDate}</p>
 
           </li>

@@ -75,7 +75,7 @@ const PostUser = () => {
   return (
     <div className={styles.componentContainer}>
       <div className={styles.formContainer}>
-        <h2>Crear Nuevo Usuario</h2>
+        <h2>Create a new user</h2>
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
             <label>Name:</label>
@@ -88,7 +88,7 @@ const PostUser = () => {
             {errors.name && <p className={styles.error}>{errors.name}</p>}
           </div>
           <div className={styles.formGroup}>
-            <label>Lastname:</label>
+            <label>Last name:</label>
             <input
               type="text"
               name="lastName"
@@ -97,7 +97,7 @@ const PostUser = () => {
             />
           </div>
           <div className={styles.formGroup}>
-            <label>Email:</label>
+            <label>Email address:</label>
             <input
               type="email"
               name="email"
@@ -115,7 +115,7 @@ const PostUser = () => {
             />
           </div>
           <div className={styles.formGroup}>
-            <label>DNI Type:</label>
+            <label>DNI type:</label>
             <select
               name="dniType"
               value={formData.dniType}
@@ -130,7 +130,7 @@ const PostUser = () => {
             </select>
           </div>
           <div className={styles.formGroup}>
-            <label>Birthdate:</label>
+            <label>Birth date:</label>
             <input
               type="date"
               name="birthDate"
@@ -148,7 +148,7 @@ const PostUser = () => {
             />
           </div>
           <div className={styles.formGroup}>
-            <label>Up to date:</label>
+            <label>Payment up to date:</label>
             <input
               type="date"
               name="upToDate"
@@ -175,7 +175,7 @@ const PostUser = () => {
             />
           </div>
           <div className={styles.formGroup}>
-            <label>PLAN:</label>
+            <label>Plan:</label>
             <select
               name="plan"
               value={formData.plan}

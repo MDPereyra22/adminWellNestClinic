@@ -47,17 +47,17 @@ const PostDoctor = () => {
         axios
             .post("https://serverwellnestclinic.onrender.com/doctor", formData)
             .then((response) => {
-                alert("Doctor created successfully:", response.data);
+                alert("Doctor created successfully!", response.data);
                 navigate("/home")
             })
             .catch((error) => {
-                alert("Error creating the doctor:", error);
+                alert("Error creating doctor", error);
             });
     };
 
     return (
         <div>
-            <h2>Create New Doctor</h2>
+            <h2>Create a new doctor</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Name:</label>

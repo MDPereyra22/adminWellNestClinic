@@ -233,7 +233,7 @@ export const postUser = (payload) => {
         "https://serverwellnestclinic.onrender.com/userClient",
         payload
       );
-      alert("User created successfully");
+      alert("User created successfully!");
       return response;
     } catch (error) {
       console.error(error);
@@ -282,7 +282,7 @@ export const postProducts = (payload) => {
         "https://serverwellnestclinic.onrender.com/product",
         payload
       );
-      alert("Product created successfully");
+      alert("Product created successfully!");
       return response;
     } catch (error) {
       alert(error.response); 
