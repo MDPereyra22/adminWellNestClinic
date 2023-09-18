@@ -292,11 +292,11 @@ export const postProducts = (payload) => {
 
 
 export const fetchProducts = async () => {
-  const accessToken = localStorage.getItem("accessToken");
+  const refreshToken = localStorage.getItem("token");
 
   const config = {
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${refreshToken}`,
     },
   };
   try {

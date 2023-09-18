@@ -10,6 +10,7 @@ import Users from "./components/Users/Users";
 import PostDoctor from "./components/PostDoctor/PostDoctor";
 import PostProducts from "./components/PostProducts/PostProducts";
 import GetProducts from "./components/GetProducts/GetProducts";
+import ProductDetail from "./components/ProductDetail/ProductDetail";
 
 
 function App() {
@@ -49,6 +50,10 @@ function App() {
         {
           path: "/getProducts",
           element: <GetProducts></GetProducts>,
+        },
+        {
+          path: "/product/:id",
+          element: <ProductDetail></ProductDetail>,
         },
        
       ],
