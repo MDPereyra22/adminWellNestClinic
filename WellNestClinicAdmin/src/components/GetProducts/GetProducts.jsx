@@ -91,14 +91,14 @@ function Products() {
                 <div className={styles.etiqueta}>Presentation type: <span className={styles.valor}>{product.Product_PresentationType.type}</span></div>
 
               </div>
+
+
               <div className={styles.deleteButton}>
-              <button
-                
-                onClick={() => handleDeleteProduct(product.id)}
-              >
-                Delete Product
-              </button>
-            </div>
+                <Link to={`/product/${product.id}`}>
+                  View Product
+                </Link>
+              </div>
+
             </div>
           </div>
 
@@ -111,6 +111,7 @@ function Products() {
           <div className={styles.content} key={product.id}>
             <div className={styles.aloha}><img className={styles.imagen} src={product.imageUrl} alt={product.name} /></div>
             <div className={styles.etiqueta}>Name: <span className={styles.valor}>{product.name}</span></div>
+            <div className={styles.etiqueta}>ID: <span className={styles.valor}>{product.id}</span></div>
             <div className={styles.etiqueta}>Description: <span className={styles.valor}>{product.description}</span></div>
             <div className={styles.etiqueta}>Amount: <span className={styles.valor}>{product.amount} mg</span></div>
             <div className={styles.etiqueta}>Dose: <span className={styles.valor}>{product.dose}</span></div>
@@ -119,12 +120,11 @@ function Products() {
             <div className={styles.etiqueta}>Drugs: <span className={styles.valor}>{product.drugs.map((drug) => drug.name)}</span></div>
             <div className={styles.etiqueta}>Laboratory: <span className={styles.valor}>{product.Product_Laboratory.name}</span></div>
             <div className={styles.etiqueta}>Presentation type: <span className={styles.valor}>{product.Product_PresentationType.type}</span></div>
-            <button
-              className={styles.restoreButton}
-              onClick={() => handleRestoreProduct(product.id)}
-            >
-              Restore Product
-            </button>
+            <div className={styles.deleteButton}>
+                <Link to={`/product/${product.id}`}>
+                  View Product
+                </Link>
+              </div>
           </div>
         ))}
       </div>
