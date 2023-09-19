@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import styles from "./ProductDetail.module.css";
+import { updateProduct } from "../../redux/action/actions";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -57,8 +58,7 @@ function ProductDetail() {
 
   const handleSave = async () => {
     try {
-      await axios.put(`https://serverwellnestclinic.onrender.com/product/`, editedProduct);
-
+      await updateProduct(editedProduct)
       setProduct({ ...editedProduct });
 
       setIsEditing(false);

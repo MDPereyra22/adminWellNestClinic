@@ -319,13 +319,25 @@ export const deleteProduct = async (id) => {
   }
 };
 
-export const restoreProduct = async (id) => {
+
+
+
+
+export const updateProduct = async (productData) => {
   try {
-    await axios.put(`${baseUrl}restore/${id}`);
+    const endpoint = import.meta.env.VITE_BASENDPOINT_BACK;
+    const response = await axios.put(
+      `${endpoint}/product/`,
+      productData
+    );
+    return response.data; // O puedes regresar cualquier dato que necesites
   } catch (error) {
-    console.error('Error restoring product:', error);
-    throw error;
+    throw error; // Puedes manejar el error aquí o dejar que lo manejen en el componente
   }
 };
+
+
+
+
 
 
