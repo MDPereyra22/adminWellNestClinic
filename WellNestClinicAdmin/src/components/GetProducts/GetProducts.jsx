@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { fetchProducts, deleteProduct} from "../../redux/action/actions";
+import { fetchProducts} from "../../redux/action/actions";
 import styles from "./GetProducts.module.css";
 
 function Products() {

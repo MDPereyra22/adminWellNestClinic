@@ -144,32 +144,16 @@ export const getUser = (id) => {
   };
 };
 
-export const setUser = (user) => ({
-  type: SET_USER,
-  payload: user,
-});
-
-export const updateUserProfilePicture = (newProfilePicture) => ({
-  type: UPDATE_PROFILE_PICTURE,
-  payload: newProfilePicture,
-});
-
-export const updateUserPassword = (newPassword) => ({
-  type: UPDATE_PASSWORD,
-  payload: newPassword,
-});
-
-export const payMembership = () => ({
-  type: PAY_MEMBERSHIP,
-});
-
-export const cancelMembership = () => ({
-  type: CANCEL_MEMBERSHIP,
-});
-
 export const getSpeciality = () => async (dispach) => {
   try {
-    const { data } = await axios.get("http://localhost:3002/speciality");
+    const refreshToken = localStorage.getItem("token");
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${refreshToken}`,
+      },
+    };
+    const { data } = await axios.get("http://localhost:3002/speciality", config);
     return dispach({
       type: GET_SPECIALITY,
       payload: data,
@@ -181,7 +165,14 @@ export const getSpeciality = () => async (dispach) => {
 
 export const doctorFiltering = (dataSpeciality) => async (dispach) => {
   try {
-    const { data } = await axios.get("http://localhost:3002/doctor");
+    const refreshToken = localStorage.getItem("token");
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${refreshToken}`,
+      },
+    };
+    const { data } = await axios.get("http://localhost:3002/doctor", config);
     const filteredDoctors = data.filter((doctor) => {
       return doctor.specialities.some(
         (speciality) => speciality.name === dataSpeciality
@@ -199,8 +190,15 @@ export const doctorFiltering = (dataSpeciality) => async (dispach) => {
 export const getDoctors = () => {
   return async (dispatch) => {
     try {
+      const refreshToken = localStorage.getItem("token");
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${refreshToken}`,
+        },
+      };
       const response = await axios.get(
-        "https://serverwellnestclinic.onrender.com/doctor/"
+        "https://serverwellnestclinic.onrender.com/doctor/", config
       );
       dispatch({
         type: GET_DOCTORS,
@@ -214,8 +212,15 @@ export const getDoctors = () => {
 
 export const getSpecialties = () => async (dispach) => {
   try {
+    const refreshToken = localStorage.getItem("token");
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${refreshToken}`,
+      },
+    };
     const { data } = await axios.get(
-      "https://serverwellnestclinic.onrender.com/speciality"
+      "https://serverwellnestclinic.onrender.com/speciality", config
     );
     return dispach({
       type: GET_SPECIALTIES,
@@ -229,9 +234,17 @@ export const getSpecialties = () => async (dispach) => {
 export const postUser = (payload) => {
   return async (dispatch) => {
     try {
+      const refreshToken = localStorage.getItem("token");
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${refreshToken}`,
+        },
+      };
       const response = await axios.post(
         "https://serverwellnestclinic.onrender.com/userClient",
-        payload
+        payload,
+        config
       );
       alert("User created successfully!");
       return response;
@@ -245,8 +258,15 @@ export const postUser = (payload) => {
 export const getDniType = () => {
   return async (dispatch) => {
     try {
+      const refreshToken = localStorage.getItem("token");
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${refreshToken}`,
+        },
+      };
       const response = await axios.get(
-        "https://serverwellnestclinic.onrender.com/dni-type/"
+        "https://serverwellnestclinic.onrender.com/dni-type/", config
       );
       dispatch({
         type: GET_DNITYPE,
@@ -261,8 +281,15 @@ export const getDniType = () => {
 export const getPlan = () => {
   return async (dispatch) => {
     try {
+      const refreshToken = localStorage.getItem("token");
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${refreshToken}`,
+        },
+      };
       const response = await axios.get(
-        "https://serverwellnestclinic.onrender.com/plan/"
+        "https://serverwellnestclinic.onrender.com/plan/", config
       );
       dispatch({
         type: GET_PLAN,
@@ -278,14 +305,23 @@ export const getPlan = () => {
 export const postProducts = (payload) => {
   return async (dispatch) => {
     try {
+      const refreshToken = localStorage.getItem("token");
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${refreshToken}`,
+        },
+      };
       const response = await axios.post(
         "https://serverwellnestclinic.onrender.com/product",
-        payload
+        payload,
+        config
       );
       alert("Product created successfully!");
       return response;
     } catch (error) {
-      alert(error.response); 
+      console.log(error.response)
+      alert(error.response);
     }
   };
 };
@@ -309,30 +345,27 @@ export const fetchProducts = async () => {
   }
 };
 
-export const deleteProduct = async (id) => {
-  try {
-    const endpoint = import.meta.env.VITE_BASENDPOINT_BACK;
-    await axios.delete(`${endpoint}/product/${id}`);
-  } catch (error) {
-    console.error('Error deleting product:', error);
-    throw error;
-  }
-};
-
-
-
 
 
 export const updateProduct = async (productData) => {
   try {
+    const refreshToken = localStorage.getItem("token");
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${refreshToken}`,
+      },
+    };
+
     const endpoint = import.meta.env.VITE_BASENDPOINT_BACK;
     const response = await axios.put(
       `${endpoint}/product/`,
-      productData
+      productData,
+      config
     );
-    return response.data; // O puedes regresar cualquier dato que necesites
+    return response.data;
   } catch (error) {
-    throw error; // Puedes manejar el error aquí o dejar que lo manejen en el componente
+    throw error;
   }
 };
 

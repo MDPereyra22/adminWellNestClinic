@@ -27,7 +27,14 @@ function ProductDetail() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`https://serverwellnestclinic.onrender.com/product/${id}`);
+        const refreshToken = localStorage.getItem("token");
+
+        const config = {
+          headers: {
+            Authorization: `Bearer ${refreshToken}`,
+          },
+        };
+        const response = await axios.get(`https://serverwellnestclinic.onrender.com/product/${id}`, config);
         setProduct(response.data);
       } catch (error) {
         console.error("Error fetching product:", error);

@@ -17,9 +17,9 @@ const PostDoctor = () => {
         specialities: [],
     });
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getSpecialties());
-    },[]);
+    }, []);
 
     console.log(specialities)
     console.log(formData)
@@ -43,9 +43,15 @@ const PostDoctor = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        const refreshToken = localStorage.getItem("token");
 
+        const config = {
+            headers: {
+                Authorization: `Bearer ${refreshToken}`,
+            },
+        };
         axios
-            .post("https://serverwellnestclinic.onrender.com/doctor", formData)
+            .post("https://serverwellnestclinic.onrender.com/doctor", formData, config)
             .then((response) => {
                 alert("Doctor created successfully!", response.data);
                 navigate("/home")
