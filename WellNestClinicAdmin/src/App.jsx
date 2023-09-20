@@ -14,6 +14,7 @@ import ProductDetail from "./components/ProductDetail/ProductDetail";
 import DoctorsPages from "./pages/Doctors/DoctorsPages";
 import ProductsPages from "./pages/Products/PostProducts";
 import UserPages from "./pages/Users/UserPages";
+import UsersPages from "./pages/Users/UsersPages";
 
 function App() {
   const router = createBrowserRouter([
@@ -39,7 +40,7 @@ function App() {
         },
         {
           path: "/users",
-          element: <Users></Users>,
+          element: <UsersPages></UsersPages>,
         },
         {
           path: "/postDoctor",
