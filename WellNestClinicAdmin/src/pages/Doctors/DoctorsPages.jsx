@@ -6,7 +6,6 @@ function DoctorsPages(){
   return(<ContinerLoginPage>
     <BackGroundGlobal imgBackGround = 'https://d1odllitvcy39q.cloudfront.net/images/141_nueva-fachada-seguro-americano-2014.jpg'></BackGroundGlobal>
     <PostDoctor></PostDoctor>
-
   </ContinerLoginPage>)
 }
 
