@@ -5,7 +5,6 @@ import Home from "./components/home/Home"
 import "./App.css";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./Authenticator/AuthPro";
-import Users from "./components/Users/Users";
 import GetProducts from "./components/GetProducts/GetProducts";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 
