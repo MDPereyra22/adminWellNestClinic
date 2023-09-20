@@ -7,11 +7,13 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./Authenticator/AuthPro";
 import PostUser from "./components/PostUser/PostUser";
 import Users from "./components/Users/Users";
-import PostDoctor from "./components/PostDoctor/PostDoctor";
 import PostProducts from "./components/PostProducts/PostProducts";
 import GetProducts from "./components/GetProducts/GetProducts";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 
+
+//pages
+import DoctorsPages from "./pages/Doctors/DoctorsPages";
 
 function App() {
   const router = createBrowserRouter([
@@ -41,7 +43,7 @@ function App() {
         },
         {
           path: "/postDoctor",
-          element: <PostDoctor></PostDoctor>,
+          element: <DoctorsPages></DoctorsPages>,
         },
         {
           path: "/postProducts",
