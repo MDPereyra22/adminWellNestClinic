@@ -5,7 +5,6 @@ import Home from "./components/home/Home"
 import "./App.css";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./Authenticator/AuthPro";
-import PostUser from "./components/PostUser/PostUser";
 import Users from "./components/Users/Users";
 import GetProducts from "./components/GetProducts/GetProducts";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
@@ -14,6 +13,7 @@ import ProductDetail from "./components/ProductDetail/ProductDetail";
 //pages
 import DoctorsPages from "./pages/Doctors/DoctorsPages";
 import ProductsPages from "./pages/Products/PostProducts";
+import UserPages from "./pages/Users/UserPages";
 
 function App() {
   const router = createBrowserRouter([
@@ -35,7 +35,7 @@ function App() {
         },
         {
           path: "/postUser",
-          element: <PostUser></PostUser>,
+          element: <UserPages></UserPages>,
         },
         {
           path: "/users",
