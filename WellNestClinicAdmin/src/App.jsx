@@ -5,13 +5,13 @@ import Home from "./components/home/Home"
 import "./App.css";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./Authenticator/AuthPro";
-import GetProducts from "./components/GetProducts/GetProducts";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 
 
 //pages
 import DoctorsPages from "./pages/Doctors/DoctorsPages";
 import ProductsPages from "./pages/Products/PostProducts";
+import ProductsList from "./pages/ProductList/ProductList"
 import UserPages from "./pages/Users/UserPages";
 import UsersPages from "./pages/Users/UsersPages";
 
@@ -51,7 +51,7 @@ function App() {
         },
         {
           path: "/getProducts",
-          element: <GetProducts></GetProducts>,
+          element: <ProductsList></ProductsList>,
         },
         {
           path: "/product/:id",

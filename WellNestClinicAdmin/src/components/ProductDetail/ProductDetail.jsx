@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import styles from "./ProductDetail.module.css";
 import { updateProduct } from "../../redux/action/actions";
+import BackGroundGlobal from "../../components/backgrounds/BackgroundGlobal"
 
 function ProductDetail() {
   const { id } = useParams();
@@ -81,6 +83,7 @@ function ProductDetail() {
 
   return (
     <div className={styles.container}>
+      <BackGroundGlobal imgBackGround = 'https://d1odllitvcy39q.cloudfront.net/images/141_nueva-fachada-seguro-americano-2014.jpg'></BackGroundGlobal>
       <h1 className={styles.title}>Product Detail</h1>
       <div className={styles.card}>
         {isEditing ? (
@@ -162,7 +165,7 @@ function ProductDetail() {
             <p>Stock: {product.stock} left</p>
             <p>Price: ${product.price}</p>
             <p>Drugs: {product.drugs.map((drug) => drug.name).join(", ")}</p>
-            <button onClick={handleEdit}>Edit Product</button>
+            <button className={styles.buttonEdit} onClick={handleEdit}>Edit Product</button>
           </>
         )}
       </div>

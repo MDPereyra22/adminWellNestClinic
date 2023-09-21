@@ -3,9 +3,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 200px;
+    padding: 10px;
+    margin-top: 7%;
+    margin-left: 14%;
+    border-radius: 20px;
     width: 70%;
-    background-color: rgb(92, 92, 93);
+    background-color: #e6f4fa;
   }
 
   .title {
@@ -30,11 +33,19 @@
     text-align: center;
   }
 
+  .card input {
+    width: 95%;
+  }
+
   .card p {
     font-size: 18px;
     margin-top: 10px;
     color: #35495e;
     border-bottom: 1px solid #cccccc; 
     padding-bottom: 5px;
+  }
+
+  .buttonEdit {
+    font-size: 15px;
   }
   
